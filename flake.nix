@@ -2,6 +2,7 @@
   description = "NixOS configuration and home-manager configurations";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    agenix.url = "github:ryantm/agenix";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +12,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, home-manager, nix-darwin, nixpkgs, ... } @ inputs:
+  outputs = { self, home-manager, nix-darwin, nixpkgs, agenix, ... } @ inputs:
     let
       nixpkgsConfig = {
         config = { allowUnfree = true; };
@@ -57,6 +58,24 @@
             }
           ];
         };
+
+        heimdall = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+        
+          specialArgs = { inherit inputs; };
+          modules = [
+            agenix.nixosModules.default
+            ./host/heimdall
+           
+            home-manager.nixosModules.home-manager
+            {
+              nixpkgs = nixpkgsConfig;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.marco = import ./home;
+            }
+          ];
       };
     };
+  };
 }
