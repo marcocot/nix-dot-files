@@ -20,6 +20,7 @@
     enable = true;
     allowPing = true;
     allowedTCPPorts = [ 22 80 443 ];
+    allowedUDPPorts = [ 53 ];
     extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
   };
 
