@@ -4,11 +4,16 @@
     neovim
     jetbrains.phpstorm
     vscode
-    nixpkgs-fmt
     direnv
     lazygit
     ripgrep
     tree-sitter
+
+    # For nix development
+    alejandra
+    deadnix
+    statix
+    nixpkgs-fmt
 
     (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
   ];
@@ -35,11 +40,13 @@
             },
           },
           "AstroNvim/astrocommunity",
-          { import = "astrocommunity.pack.typescript"},    { import = "astrocommunity.pack.rust"},
+          { import = "astrocommunity.pack.typescript"},
+          { import = "astrocommunity.pack.rust"},
           { import = "astrocommunity.pack.tailwindcss"},
           { import = "astrocommunity.pack.python-ruff"},
           { import = "astrocommunity.pack.php"},
           { import = "astrocommunity.code-runner.compiler-nvim"},
+          { import = "astrocommunity.pack.nix"}
         }
       }
     '';
