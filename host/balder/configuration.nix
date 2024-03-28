@@ -6,9 +6,13 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi = {
+      efiSysMountPoint = "/boot/efi";
+      canTouchEfiVariables = true;
+    };
+  };
 
   networking.hostName = "balder"; # Define your hostname.
 
@@ -20,64 +24,64 @@
     keyMap = "it";
   };
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 
-  services.printing.enable = true;
+  services = {
+    printing.enable = true;
 
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;
-  };
+    avahi = {
+      enable = true;
+      nssmdns = true;
+      openFirewall = true;
+    };
 
-  services.xserver = {
-    videoDrivers = [ "nvidia" ];
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+
+
+    xserver = {
+      videoDrivers = [ "nvidia" ];
+      enable = true;
+      displayManager = {
+        sddm = {
+          enable = true;
+          wayland.enable = false;
+        };
+
+        # defaultSession = "plasmawayland";
+      };
+      desktopManager = {
+        plasma5.enable = true;
+      };
+      xkb.layout = "it";
+    };
+
   };
 
   environment.systemPackages = with pkgs; [
     unzip
   ];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland.enable = false;
-      };
-
-      # defaultSession = "plasmawayland";
-    };
-    desktopManager = {
-      plasma5.enable = true;
-    };
-    xkb.layout = "it";
-  };
-
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  # sound.enable = true;
   hardware.pulseaudio.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

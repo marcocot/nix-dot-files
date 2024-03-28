@@ -31,10 +31,11 @@
             {
               nixpkgs = nixpkgsConfig;
 
-              # `home-manager` config
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.marco = import ./home;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.marco = import ./home;
+              };
             }
           ];
         };
@@ -52,30 +53,35 @@
             {
               nixpkgs = nixpkgsConfig;
 
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.marco = import ./home;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.marco = import ./home;
+              };
+
             }
           ];
         };
 
         heimdall = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-        
+
           specialArgs = { inherit inputs; };
           modules = [
             agenix.nixosModules.default
             ./host/heimdall
-           
+
             home-manager.nixosModules.home-manager
             {
               nixpkgs = nixpkgsConfig;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.marco = import ./home;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.marco = import ./home;
+              };
             }
           ];
+        };
       };
     };
-  };
 }

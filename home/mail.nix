@@ -4,9 +4,11 @@
     qcal
   ];
 
-  programs.mbsync.enable = true;
-  programs.msmtp.enable = true;
-  programs.qcal.enable = true;
+  programs = {
+    mbsync.enable = true;
+    msmtp.enable = true;
+    qcal.enable = true;
+  };
 
   accounts.calendar.basePath = ".calendar";
   accounts.calendar.accounts = {

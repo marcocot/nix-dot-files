@@ -16,6 +16,7 @@
         pass
 
         # development
+        act
         nodejs_20
         yarn
         python3
