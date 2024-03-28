@@ -1,28 +1,5 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [
-    gcc
-    gnumake
-    pass
-
-    # extra packages
-    spotify
-    vlc
-    slack
-    brave
-    transmission-qt
-    thunderbird
-
-    # development
-    nodejs_20
-    yarn
-    python3
-    poetry
-    php83
-    php83Packages.composer
-    docker-compose
-  ];
-
 
   imports = [
     ./shell.nix
@@ -31,6 +8,31 @@
     ./mail.nix
   ];
 
-  programs.home-manager.enable = true;
-  home.stateVersion = "23.11";
+  config = with lib; {
+    home.packages = with pkgs;
+      [
+        gcc
+        gnumake
+        pass
+
+        # development
+        nodejs_20
+        yarn
+        python3
+        poetry
+        php83
+        php83Packages.composer
+      ] ++ lib.optionals stdenv.isLinux [
+        # on darwin those are managed with homebrew
+        spotify
+        vlc
+        slack
+        brave
+        transmission-qt
+        thunderbird
+      ];
+
+    programs.home-manager.enable = true;
+    home.stateVersion = "23.11";
+  };
 }

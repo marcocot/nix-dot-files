@@ -15,7 +15,6 @@
     brews = [
       "aria2"
       "awscli"
-      "pass"
       "symfony-cli"
       "tailscale"
       "wget"
@@ -34,6 +33,7 @@
       "spotify"
       "stremio"
       "transmission"
+      "visual-studio-code"
       "vlc"
     ];
   };
