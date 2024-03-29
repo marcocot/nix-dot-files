@@ -15,6 +15,7 @@
       deadnix
       statix
       nixpkgs-fmt
+      nil
 
       (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
     ];
