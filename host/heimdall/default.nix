@@ -1,5 +1,6 @@
 { inputs, ... }: {
   imports = [
+    ../shared/base.nix
     ./hardware.nix
     ./configuration.nix
   ];
