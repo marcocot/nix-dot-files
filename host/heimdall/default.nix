@@ -3,6 +3,7 @@
     ../shared/base.nix
     ./hardware.nix
     ./configuration.nix
+    ./containers.nix
   ];
 
   environment.etc = {
