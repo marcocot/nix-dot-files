@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ withGui, lib, ... }:
 {
-  programs.thunderbird = with pkgs; {
-    enable = stdenv.isLinux;
+  programs.thunderbird = lib.mkIf withGui {
+    enable = true;
     profiles = {
       marco = {
         isDefault = true;
@@ -14,7 +14,7 @@
     };
   };
 
-  accounts.email = with pkgs; {
+  accounts.email = {
     accounts.runbox = {
       address = "marco.cotrufo@runbox.it";
       imap.host = "mail.runbox.com";
@@ -28,7 +28,7 @@
       };
 
       thunderbird = {
-        enable = stdenv.isLinux;
+        enable = withGui;
       };
     };
   };

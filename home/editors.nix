@@ -1,10 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, withGui, ... }:
 {
   home = {
     packages = with pkgs; [
       neovim
-      jetbrains.phpstorm
-      vscode
       direnv
       lazygit
       ripgrep
@@ -17,6 +15,9 @@
       nixpkgs-fmt
       nil
 
+    ] ++ lib.optionals withGui [
+      unstable.jetbrains.phpstorm
+      unstable.vscode
       (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
     ];
 

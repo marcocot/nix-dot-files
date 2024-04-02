@@ -14,7 +14,12 @@
     };
   };
 
-  networking.hostName = "balder"; # Define your hostname.
+  networking =
+  {hostName = "balder"; # Define your hostname.
+      firewall = {
+      enable = true;
+      };
+  };
 
   hardware = {
     opengl = {
@@ -38,7 +43,6 @@
     avahi = {
       enable = true;
       nssmdns = true;
-      openFirewall = true;
     };
 
     pipewire = {

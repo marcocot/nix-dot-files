@@ -1,6 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, specialArgs, ... }:
+let
+inherit (specialArgs) withGui;
+in
 {
-
   imports = [
     ./shell.nix
     ./editors.nix
@@ -23,7 +25,7 @@
         poetry
         php83
         php83Packages.composer
-      ] ++ lib.optionals stdenv.isLinux [
+      ] ++ lib.optionals withGui [
         # on darwin those are managed with homebrew
         spotify
         vlc

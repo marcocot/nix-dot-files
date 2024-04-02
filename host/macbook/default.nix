@@ -1,4 +1,4 @@
-{ nixpkgs, nix-darwing, ... }: {
+{ nixpkgs, ... }: {
   programs.zsh.enable = true;
 
   users = {
