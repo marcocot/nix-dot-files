@@ -13,6 +13,6 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v4
         with:
           fail-mode: true
-      - name: Install Nix
+      - name: "Install Nix ❄️"
         uses: DeterminateSystems/nix-installer-action@v3
       - run: nix run --extra-experimental-features 'nix-command flakes'  nixpkgs#statix -- check
