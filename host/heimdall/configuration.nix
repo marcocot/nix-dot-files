@@ -71,11 +71,12 @@
         };
       };
     };
-    plex = {
+    plex = with pkgs; {
       enable = true;
       openFirewall = true;
       user = "marco";
       group = "users";
+      package = unstable.plex;
     };
     restic.backups = {
       daily = {
