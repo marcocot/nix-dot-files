@@ -25,6 +25,9 @@ in
         poetry
         php83
         php83Packages.composer
+        cargo
+        rust-analyzer
+        docker-compose
       ] ++ lib.optionals withGui [
         # on darwin those are managed with homebrew
         spotify
