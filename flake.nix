@@ -28,7 +28,7 @@
     in
     {
       nix.settings.experimental-features = "nix-command flakes";
-      nixpkgs.overlays = [overlay-unstable];
+      nixpkgs.overlays = [ overlay-unstable ];
 
       darwinConfigurations = {
         "Marcos-MacBook-Pro" = nix-darwin.lib.darwinSystem {
@@ -102,6 +102,29 @@
               };
             }
           ];
+        };
+      };
+
+      homeConfigurations = {
+        "fido" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+          extraSpecialArgs = {
+            withGui = true;
+          };
+          modules = [
+            ./home
+            {
+              nixpkgs.config.allowUnfree = true;
+              nixpkgs.overlays = [ overlay-unstable ];
+              home = {
+                username = "fido";
+                homeDirectory = "/home/fido";
+                stateVersion = "23.11";
+              };
+            }
+          ];
+
         };
       };
     };
