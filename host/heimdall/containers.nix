@@ -23,6 +23,7 @@ let
     "calibre-web"
     "kavita"
     "heimdall"
+    "tautulli"
   ];
 
   fullList = pkgs.lib.genAttrs vars.services (service: {
