@@ -28,6 +28,7 @@ in
         cargo
         rust-analyzer
         docker-compose
+        unstable.devenv
       ] ++ lib.optionals withGui [
         # on darwin those are managed with homebrew
         spotify
