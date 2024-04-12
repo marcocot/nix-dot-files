@@ -15,10 +15,14 @@
       nixpkgs-fmt
       nil
 
+      (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
+
     ] ++ lib.optionals withGui [
       unstable.jetbrains.phpstorm
       unstable.vscode
-      (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
+      unstable.android-studio
+      unstable.scrcpy
+      unstable.android-tools
     ];
 
     file = {
