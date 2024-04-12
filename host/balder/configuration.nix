@@ -4,6 +4,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnfreePredicate = _: true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "root" "@wheel" "marco" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
