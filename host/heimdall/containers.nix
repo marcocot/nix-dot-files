@@ -82,6 +82,18 @@ let
           "traefik.http.routers.actual.tls.certresolver" = "myresolver";
         };
       };
+
+      vaultwarden = {
+        image = "vaultwarden/server:latest";
+        volumes = [
+          "/mnt/media/config/vaultwarden:/data"
+        ];
+        labels = {
+          "traefik.enable" = "true";
+          "traefik.http.routers.vaultwarden.entrypoints" = "websecure";
+          "traefik.http.routers.vaultwarden.tls.certresolver" = "myresolver";
+        };
+      };
     } // vars.fullList;
   };
 }
