@@ -34,6 +34,8 @@
         "Marcos-MacBook-Pro" = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+
             ./modules/darwin.nix
             ./host/macbook
             home-manager.darwinModules.home-manager
@@ -44,7 +46,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  withGui = true;
+                  withGui = false;
                 };
                 users.marco = import ./home;
               };
