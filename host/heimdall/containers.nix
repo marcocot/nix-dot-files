@@ -85,6 +85,10 @@ let
 
       vaultwarden = {
         image = "vaultwarden/server:latest";
+        environment = {
+          SIGNUPS_ALLOWED = "false";
+          SHOW_PASSWORD_HINT = "false";
+        };
         volumes = [
           "/mnt/media/config/vaultwarden:/data"
         ];
