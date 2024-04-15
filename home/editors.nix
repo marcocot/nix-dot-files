@@ -59,6 +59,18 @@
           }
         '';
       };
+
+      ".config/nvim/lua/user/plugins/surround.lua" = {
+        text = ''
+          return {
+            "kylechui/nvim-surround",
+            event = "VeryLazy",
+            config = function() 
+              require("nvim-surround").setup({})
+            end
+          }
+      '';
+      };
     };
   };
 
