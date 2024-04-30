@@ -1,6 +1,12 @@
 { nixpkgs, ... }: {
   programs.zsh.enable = true;
 
+  nix = {
+    settings = {
+      trusted-users = [ "root" "marco" ];
+    };
+  };
+
   users = {
     users = {
       marco = {
