@@ -1,9 +1,8 @@
 { pkgs, withGui, ... }:
 {
   home = {
-    packages = with pkgs; [
-    ] ++ lib.optionals withGui [
-      unstable.davinci-resolve
+    packages = pkgs.lib.optionals withGui [
+      pkgs.unstable.davinci-resolve
     ];
   };
 }
