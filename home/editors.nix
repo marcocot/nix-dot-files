@@ -65,11 +65,20 @@
           return {
             "kylechui/nvim-surround",
             event = "VeryLazy",
-            config = function() 
+            config = function()
               require("nvim-surround").setup({})
             end
           }
       '';
+      };
+
+      ".config/nvim/lua/user/plugins/wakatime.lua" = {
+        text = ''
+          return {
+            "wakatime/vim-wakatime",
+            lazy = false
+          }
+        '';
       };
     };
   };
