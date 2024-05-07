@@ -108,7 +108,7 @@
       };
 
       homeConfigurations = {
-        "fido" = home-manager.lib.homeManagerConfiguration {
+        "marco" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
           extraSpecialArgs = {
@@ -120,8 +120,8 @@
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [ overlay-unstable ];
               home = {
-                username = "fido";
-                homeDirectory = "/home/fido";
+                username = "marco";
+                homeDirectory = "/home/marco";
                 stateVersion = "23.11";
               };
             }
