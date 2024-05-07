@@ -77,4 +77,6 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  fonts.fontconfig.enable = true;
 }
