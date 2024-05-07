@@ -57,30 +57,6 @@
 
       # Desktop Configuration
       nixosConfigurations = {
-        balder = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-
-          specialArgs = { inherit inputs; };
-          modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
-
-            ./host/balder
-            home-manager.nixosModules.home-manager
-            {
-              nixpkgs = nixpkgsConfig;
-
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  withGui = true;
-                };
-                users.marco = import ./home;
-              };
-            }
-          ];
-        };
-
         heimdall = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
