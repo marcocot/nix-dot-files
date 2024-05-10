@@ -52,10 +52,9 @@
       }];
     };
 
-    defaultGateway = "192.168.178.1";
+    defaultGateway = "192.168.178.254";
     nameservers = [ "8.8.8.8" ];
   };
-  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
