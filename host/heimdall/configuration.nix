@@ -15,7 +15,7 @@
     firewall = {
       enable = true;
       allowPing = true;
-      allowedTCPPorts = [ 22 80 443 ];
+      allowedTCPPorts = [ 22 80 443 4646 ];
       allowedUDPPorts = [ 53 config.services.tailscale.port ];
       trustedInterfaces = [ "tailscale0" ];
       extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
@@ -75,6 +75,23 @@
         };
       };
     };
+
+    nomad = {
+      enable = true;
+      package = pkgs.unstable.nomad_1_7;
+      enableDocker = true;
+      dropPrivileges = false;
+      settings = {
+        server = {
+          enabled = true;
+          bootstrap_expect = 1;
+        };
+        client = {
+          enabled = true;
+        };
+      };
+    };
+
     plex = with pkgs; {
       enable = true;
       openFirewall = true;
