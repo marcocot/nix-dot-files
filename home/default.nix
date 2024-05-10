@@ -40,6 +40,7 @@ in
         thunderbird
       ];
 
+    targets.genericLinux.enable = true;
     programs.home-manager.enable = true;
     home.stateVersion = "23.11";
   };
