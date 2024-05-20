@@ -30,37 +30,30 @@
         recursive = true;
         source = pkgs.fetchFromGitHub {
           owner = "AstroNvim";
-          repo = "AstroNvim";
-          rev = "2fcb9e20c13aaa3653421017236ec076db3a4c00";
-          sha256 = "sha256-dgKjLA+Ovq0bjdTBvwf03cyELS1h0Mb2CeHXT4Uu1DM=";
+          repo = "template";
+          rev = "5aedbc8d992fc625b316d58d3d775852c2d23172";
+          sha256 = "sha256-myC0fYy0+EF3Ah06Fvg2m4l3INTQxaCiKN3xpNugIyU=";
         };
       };
 
-      ".config/nvim/lua/user/init.lua" = {
+      ".config/nvim/lua/plugins/custom.lua" = {
         text = ''
           return {
-            plugins = {
-              telescope = {
-                defaults = {
-                  file_ignore_patterns = {
-                    "^node_modules/"
-                  },
-                },
-              },
-              "AstroNvim/astrocommunity",
+             "AstroNvim/astrocommunity",
               { import = "astrocommunity.pack.typescript"},
               { import = "astrocommunity.pack.rust"},
               { import = "astrocommunity.pack.tailwindcss"},
               { import = "astrocommunity.pack.python-ruff"},
               { import = "astrocommunity.pack.php"},
               { import = "astrocommunity.code-runner.compiler-nvim"},
-              { import = "astrocommunity.pack.nix"}
-            }
+              { import = "astrocommunity.pack.nix"},
+              { import = "astrocommunity.pack.cpp"},
+              { import = "astrocommunity.code-runner.compiler-nvim"}
           }
         '';
       };
 
-      ".config/nvim/lua/user/plugins/surround.lua" = {
+      ".config/nvim/lua/plugins/surround.lua" = {
         text = ''
           return {
             "kylechui/nvim-surround",
@@ -72,11 +65,20 @@
       '';
       };
 
-      ".config/nvim/lua/user/plugins/wakatime.lua" = {
+      ".config/nvim/lua/plugins/wakatime.lua" = {
         text = ''
           return {
             "wakatime/vim-wakatime",
             lazy = false
+          }
+        '';
+      };
+      ".config/nvim/lua/user/lsp/config/clangd.lua" = {
+        text = ''
+          return {
+            capabilities = {
+             offsetEncoding = "utf-8",
+            },
           }
         '';
       };
