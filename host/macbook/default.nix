@@ -44,7 +44,6 @@
     ];
   };
 
-  homebrew.onActivation.cleanup = "zap";
   homebrew.taps = [
     "homebrew/cask-fonts"
     "symfony-cli/tap"
