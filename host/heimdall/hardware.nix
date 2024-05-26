@@ -15,7 +15,11 @@
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    extraModulePackages = with config.boot.kernelPackages; [
+      rtl8821cu
+    ];
+    blacklistedKernelModules = ["rtl8xxxu"];
+
   };
 
   fileSystems = {
@@ -42,7 +46,6 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault false;
   networking = {
     interfaces.eno1 = {
       useDHCP = false;
