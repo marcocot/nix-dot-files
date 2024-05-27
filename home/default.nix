@@ -8,7 +8,6 @@ in
     ./editors.nix
     ./git.nix
     ./mail.nix
-    ./media.nix
   ];
 
   config = with lib; {
