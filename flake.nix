@@ -93,6 +93,7 @@
           modules = [
             ./home
             {
+              targets.genericLinux.enable = true;
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [ overlay-unstable ];
               home = {
