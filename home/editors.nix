@@ -19,7 +19,7 @@
 
     ] ++ lib.optionals withGui [
       unstable.jetbrains.phpstorm
-      unstable.vscode
+      # unstable.vscode
       unstable.android-studio
       unstable.scrcpy
       unstable.android-tools
@@ -31,8 +31,8 @@
         source = pkgs.fetchFromGitHub {
           owner = "AstroNvim";
           repo = "template";
-          rev = "5aedbc8d992fc625b316d58d3d775852c2d23172";
-          sha256 = "sha256-myC0fYy0+EF3Ah06Fvg2m4l3INTQxaCiKN3xpNugIyU=";
+          rev = "7af067e0ffef9975e8e8054d8455e7662dfb1fa0";
+          sha256 = "sha256-bwabCS0oeH7yi+GWIj/0vHgr/6fLDFFgZhtM1GhKlok=";
         };
       };
 
