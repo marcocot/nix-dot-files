@@ -18,9 +18,9 @@
       (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
 
     ] ++ lib.optionals withGui [
-      unstable.jetbrains.phpstorm
+      # unstable.jetbrains.phpstorm
       # unstable.vscode
-      unstable.android-studio
+      # unstable.android-studio
       unstable.scrcpy
       unstable.android-tools
     ];
