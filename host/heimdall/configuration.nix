@@ -16,6 +16,7 @@
       enable = true;
       allowPing = true;
       allowedTCPPorts = [ 22 80 443 4646 ];
+      allowedTCPPorts = [ 22 80 443 6443 ];
       allowedUDPPorts = [ 53 config.services.tailscale.port ];
       trustedInterfaces = [ "tailscale0" ];
       extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
