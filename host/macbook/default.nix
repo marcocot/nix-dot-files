@@ -4,7 +4,6 @@
     . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
   '';
 
-  nixpkgs.overlays = [ (import ../../overlays) ];
   nix.extraOptions = ''
     auto-optimise-store = true
     experimental-features = nix-command flakes
