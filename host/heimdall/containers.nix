@@ -72,7 +72,7 @@ let
       };
 
       actual = {
-        image = "actualbudget/actual-server:24.5.0"; # we want to pin the version
+        image = "actualbudget/actual-server:24.7.0"; # we want to pin the version
         volumes = [
           "/mnt/media/config/actual:/data"
         ];
