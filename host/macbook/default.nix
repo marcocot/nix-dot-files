@@ -1,5 +1,22 @@
-{ nixpkgs, ... }: {
+{ nixpkgs, pkgs, ... }: {
   programs.zsh.enable = true;
+  programs.zsh.shellInit = ''
+    . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
+  '';
+
+  nixpkgs.overlays = [ (import ../../overlays) ];
+  nix.extraOptions = ''
+    auto-optimise-store = true
+    experimental-features = nix-command flakes
+    extra-platforms = x86_64-darwin aarch64-darwin
+  '';
+
+  environment.systemPackages = with pkgs; [
+    asdf-vm
+    (pkgs.callPackage ./alfred.nix { })
+  ];
+
+  security.pam.enableSudoTouchIdAuth = true;
 
   nix = {
     settings = {
@@ -42,6 +59,12 @@
       "visual-studio-code"
       "vlc"
     ];
+
+    masApps = {
+      "Kindle" = 302584613;
+      "Tailscale" = 1475387142;
+      "The Unarchiver" = 425424353;
+    };
   };
 
   homebrew.taps = [
@@ -50,10 +73,22 @@
   ];
 
   system.defaults = {
+    dock = {
+      mru-spaces = false;
+      show-recents = false;
+      tilesize = 36;
+    };
     finder = {
-      AppleShowAllExtensions = true;
       _FXShowPosixPathInTitle = true;
+      AppleShowAllExtensions = true;
+      FXPreferredViewStyle = "clmv";
       ShowPathbar = true;
+    };
+
+    menuExtraClock = {
+      Show24Hour = true;
+      ShowAMPM = true;
+      ShowDate = 1;
     };
   };
 }
