@@ -62,7 +62,7 @@
               require("nvim-surround").setup({})
             end
           }
-      '';
+        '';
       };
 
       ".config/nvim/lua/plugins/wakatime.lua" = {
@@ -82,7 +82,7 @@
           }
         '';
       };
-      
+
     };
   };
 

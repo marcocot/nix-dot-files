@@ -1,45 +1,45 @@
-{ pkgs,... }:
+{ pkgs, ... }:
 let
- vars = {
-  common_env = {
-    PUID = "1000";
-    PGID = "100";
-    TZ = "Europe/Rome";
-  };
-
-  mounts = [
-    "/mnt/media/downloads:/downloads"
-    "/mnt/media/library/movies:/movies"
-    "/mnt/media/library/tv:/tv"
-    "/mnt/media/library/books:/books"
-    "/mnt/media/library/comics:/comics"
-  ];
-
-  services = [
-    "prowlarr"
-    "radarr"
-    "sonarr"
-    "bazarr"
-    "calibre-web"
-    "kavita"
-    "heimdall"
-    "tautulli"
-  ];
-
-  fullList = pkgs.lib.genAttrs vars.services (service: {
-    image = "lscr.io/linuxserver/${service}";
-    environment = vars.common_env;
-    volumes = vars.mounts ++ [
-      "/mnt/media/config/${service}:/config"
-    ];
-    labels = {
-      "traefik.enable" = "true";
+  vars = {
+    common_env = {
+      PUID = "1000";
+      PGID = "100";
+      TZ = "Europe/Rome";
     };
-  });
- };
- in
+
+    mounts = [
+      "/mnt/media/downloads:/downloads"
+      "/mnt/media/library/movies:/movies"
+      "/mnt/media/library/tv:/tv"
+      "/mnt/media/library/books:/books"
+      "/mnt/media/library/comics:/comics"
+    ];
+
+    services = [
+      "prowlarr"
+      "radarr"
+      "sonarr"
+      "bazarr"
+      "calibre-web"
+      "kavita"
+      "heimdall"
+      "tautulli"
+    ];
+
+    fullList = pkgs.lib.genAttrs vars.services (service: {
+      image = "lscr.io/linuxserver/${service}";
+      environment = vars.common_env;
+      volumes = vars.mounts ++ [
+        "/mnt/media/config/${service}:/config"
+      ];
+      labels = {
+        "traefik.enable" = "true";
+      };
+    });
+  };
+in
 {
-  virtualisation.oci-containers =  {
+  virtualisation.oci-containers = {
     backend = "docker";
     containers = {
       watchtower = {

@@ -18,7 +18,7 @@
     extraModulePackages = with config.boot.kernelPackages; [
       rtl8821cu
     ];
-    blacklistedKernelModules = ["rtl8xxxu"];
+    blacklistedKernelModules = [ "rtl8xxxu" ];
 
   };
 

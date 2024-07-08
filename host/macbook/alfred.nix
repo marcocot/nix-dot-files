@@ -11,9 +11,9 @@ stdenv.mkDerivation rec {
   sourceRoot = ".";
   phases = [ "unpackPhase" "installPhase" ];
   installPhase = ''
-      mkdir -p "$out/Applications"
-      cp -r "Alfred 5.app" "$out/Applications/Alfred 5.app"
-    '';
+    mkdir -p "$out/Applications"
+    cp -r "Alfred 5.app" "$out/Applications/Alfred 5.app"
+  '';
 
   src = fetchurl {
     name = "Alfred_${version}.dmg";
