@@ -3,6 +3,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix.url = "github:ryantm/agenix";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
@@ -13,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { home-manager, nix-darwin, nixpkgs, nixpkgs-unstable, agenix, ... } @ inputs:
+  outputs = { home-manager, nix-darwin, nixpkgs, nixpkgs-unstable, fenix, agenix, ... } @ inputs:
     let
       nixpkgsConfig = {
         config = { allowUnfree = true; };
@@ -95,7 +99,7 @@
             {
               targets.genericLinux.enable = true;
               nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [ overlay-unstable ];
+              nixpkgs.overlays = [ overlay-unstable fenix.overlays.default ];
               home = {
                 username = "marco";
                 homeDirectory = "/home/marco";

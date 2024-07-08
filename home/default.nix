@@ -1,6 +1,6 @@
 { pkgs, lib, specialArgs, ... }:
 let
-inherit (specialArgs) withGui;
+  inherit (specialArgs) withGui;
 in
 {
   imports = [
@@ -14,6 +14,15 @@ in
     home.packages = with pkgs;
       [
         unstable.devenv
+        (fenix.complete.withComponents [
+          "cargo"
+          "clippy"
+          "rust-src"
+          "rustc"
+          "rustfmt"
+        ])
+        rust-analyzer-nightly
+
       ] ++ lib.optionals withGui [
         # on darwin those are managed with homebrew
         spotify
