@@ -16,7 +16,7 @@
       enable = true;
       allowPing = true;
       allowedTCPPorts = [ 22 80 443 6443 ];
-      allowedUDPPorts = [ 53 config.services.tailscale.port ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
       trustedInterfaces = [ "tailscale0" ];
       extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
     };
@@ -51,28 +51,6 @@
       publish = {
         enable = true;
         userServices = true;
-      };
-    };
-
-    adguardhome = {
-      enable = true;
-      mutableSettings = false;
-      openFirewall = true;
-      settings = {
-        bind_port = 3000;
-        dns = {
-          ratelimit = 0;
-          bootstrap_dns = [
-            "9.9.9.10"
-            "149.112.112.10"
-            "2620:fe::10"
-            "2620:fe::fe:10"
-          ];
-          bind_hosts = [ "0.0.0.0" ];
-          upstream_dns = [
-            "8.8.8.8"
-          ];
-        };
       };
     };
 
