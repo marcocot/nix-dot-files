@@ -38,7 +38,7 @@
         "Marcos-MacBook-Pro" = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable fenix.overlays.default ]; })
 
             ./modules/darwin.nix
             ./host/macbook
