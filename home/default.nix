@@ -14,14 +14,14 @@ in
     home.packages = with pkgs;
       [
         unstable.devenv
-        (fenix.complete.withComponents [
+        (fenix.stable.withComponents [
           "cargo"
           "clippy"
           "rust-src"
           "rustc"
           "rustfmt"
         ])
-        rust-analyzer-nightly
+        rust-analyzer
 
       ] ++ lib.optionals withGui [
         # on darwin those are managed with homebrew
