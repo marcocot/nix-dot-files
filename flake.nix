@@ -66,7 +66,7 @@
 
           specialArgs = { inherit inputs; };
           modules = [
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable fenix.overlays.default ]; })
 
             agenix.nixosModules.default
             ./host/heimdall
