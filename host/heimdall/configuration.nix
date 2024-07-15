@@ -86,6 +86,13 @@
       securityType = "user";
       openFirewall = true;
       shares = {
+        library = {
+          path = "/mnt/media/library/";
+          browseable = "yes";
+          "valid users" = "marco";
+          "read only" = "no";
+          "guest ok" = "no";
+        };
         downloads = {
           path = "/mnt/media/downloads";
           browseable = "yes";
