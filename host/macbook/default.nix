@@ -43,6 +43,7 @@
     ];
 
     casks = [
+      "appcleaner"
       "brave-browser"
       "cyberduck"
       "dbeaver-community"
@@ -67,7 +68,6 @@
   };
 
   homebrew.taps = [
-    "homebrew/cask-fonts"
     "symfony-cli/tap"
   ];
 
