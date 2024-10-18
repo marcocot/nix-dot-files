@@ -10,10 +10,6 @@ Hey there! 👋 Welcome to my personal computer setup repository! Here you'll fi
 
 For my MacBook, I use [nix-darwin](https://github.com/LnL7/nix-darwin) to manage system configurations. This file contains all the customizations I've made to ensure my MacBook behaves just the way I like it.
 
-`host/heimdall`
-
-My Home Theater PC is not just for movies and TV shows, it's also a playground for Nix configurations. This file contains settings optimized for media playback and any additional utilities I need on my HTPC.
-
 ## Additional Services Implemented
 
 ### Media Management with arr Suite
