@@ -45,9 +45,10 @@
               { import = "astrocommunity.pack.tailwindcss"},
               { import = "astrocommunity.pack.python-ruff"},
               { import = "astrocommunity.pack.php"},
+              { import = "astrocommunity.pack.json"},
               { import = "astrocommunity.code-runner.compiler-nvim"},
               { import = "astrocommunity.pack.nix"},
-              { import = "astrocommunity.pack.cpp"},
+              { import = "astrocommunity.test.neotest"},
               { import = "astrocommunity.code-runner.compiler-nvim"}
           }
         '';
@@ -61,6 +62,14 @@
             config = function()
               require("nvim-surround").setup({})
             end
+          }
+        '';
+      };
+
+      ".config/nvim/lua/plugins/neotest-rust.lua" = {
+        text = ''
+          return {
+            "rouge8/neotest-rust"
           }
         '';
       };
@@ -82,7 +91,6 @@
           }
         '';
       };
-
     };
   };
 
