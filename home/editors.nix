@@ -1,29 +1,33 @@
-{ pkgs, withGui, ... }:
 {
+  pkgs,
+  withGui,
+  ...
+}: {
   home = {
-    packages = with pkgs; [
-      neovim
-      direnv
-      lazygit
-      ripgrep
-      tree-sitter
+    packages = with pkgs;
+      [
+        neovim
+        direnv
+        lazygit
+        ripgrep
+        tree-sitter
 
-      # For nix development
-      alejandra
-      deadnix
-      statix
-      nixpkgs-fmt
-      nil
+        # For nix development
+        alejandra
+        deadnix
+        statix
+        nixpkgs-fmt
+        nil
 
-      (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" "FiraCode" "Hack" ]; })
-
-    ] ++ lib.optionals withGui [
-      # unstable.jetbrains.phpstorm
-      # unstable.vscode
-      # unstable.android-studio
-      unstable.scrcpy
-      unstable.android-tools
-    ];
+        (pkgs.nerdfonts.override {fonts = ["FantasqueSansMono" "FiraCode" "Hack"];})
+      ]
+      ++ lib.optionals withGui [
+        # unstable.jetbrains.phpstorm
+        # unstable.vscode
+        # unstable.android-studio
+        unstable.scrcpy
+        unstable.android-tools
+      ];
 
     file = {
       ".config/nvim" = {
