@@ -22,6 +22,24 @@
         default = "current";
         autoSetupRemote = "true";
       };
+      column = {
+        ui = "auto";
+      };
+      branch = {
+        sort = "-committerdate";
+      };
+      tag = {
+        sort = "version:refname";
+      };
+      init = {
+        defaultBranch = "master";
+      };
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = "true";
+        renames = "true";
+      };
       pull = {
         rebase = true;
       };
